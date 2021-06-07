@@ -6,6 +6,13 @@ terraform {
     }
   }
   required_version = "~> 0.14"
+  backend "s3" {
+    bucket         = "4e467c76-ef0f-3666-071b-7c558d7ef930-backend"
+    key            = "ivanenko/eu-central-1/terraform/terraform.tfstate"
+    region         = "eu-central-1"
+    acl            = "bucket-owner-full-control"
+    dynamodb_table = "terraform_locks"
+  }
 }
 
 provider "aws" {
